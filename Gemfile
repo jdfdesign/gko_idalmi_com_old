@@ -19,7 +19,7 @@ group :production do
   gem 'gko_categories', :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git'
   gem 'gko_stickers', :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git'
   gem 'gko_features', :git => 'git@github.com:jdfdesign/gko_cms_rails_3.git'
-  gem 'gko_store', '= 0.0.02',  :git => 'git@github.com:jdfdesign/gko_store.git'
+  gem 'gko_store', '= 0.0.03',  :git => 'git@github.com:jdfdesign/gko_store.git'
 end
 #group :development do
 #  gem "gko_core", :path => File.expand_path('../../gko_cms_rails_3/gko_core', __FILE__)
