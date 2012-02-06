@@ -1,0 +1,27 @@
+<%
+@products ||= @site.products.visibles
+@features = @site.features.visibles
+%>
+<% content_for :page_content do %>
+<% if @features.any? %>
+<div class="row features">
+  <div class="twelve columns">
+    <%= render 'shared/features', :features => @features %>
+  </div>
+</div>
+<% end %> 
+<div class="row">
+  <section class="four columns">
+    <h3><%= "Title column 1".html_safe %></h3>
+    <%= "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte".html_safe %>  
+  </section>
+  <section class="four columns">
+    <h3><%= "Title column 2".html_safe %></h3>
+    <%= "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte".html_safe %>  
+  </section>
+  <section class="four columns"> 
+    <h3><%= "Newsletter".html_safe %></h3>
+    <%= "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte".html_safe %>   				
+  </section>
+</div> 
+<% end %>
