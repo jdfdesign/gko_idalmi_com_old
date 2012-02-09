@@ -1,18 +1,5 @@
-/*
-*= require_self
-******/
-
-/* -------------------------------------------------- 
-   Table of Contents
------------------------------------------------------
-:: Shared Styles
-:: Page Name 1
-:: Page Name 2
-*/
 $baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;      
-$baseFontColor: #4F4F4F;
-$baseColor: #4F4F4F;
-$bodyBackground: #fefefe;
+$textColor: #4F4F4F;
 $altColor: #DD1F26;//red
 $linkColor: #585858;
 $linkColorActive: $altColor;
@@ -22,10 +9,8 @@ $borderColor: #fafafa;
 $borderSize: 6px;
 
 @import "gko_public_all";
-@import "twitter/bootstrap_plugins";
 @import "gko/store"; 
 @import "gko/elastislide";
-@import "gko/orbit";
 /*-----------------------------------------
    Shared Styles
 ----------------------------------------- */ 
@@ -113,40 +98,20 @@ font-weight: 400;
 ----------------------------------------- */
 body {
 	font-weight: 300;
+	background: #fefefe;
 }	
-.wrapper-wide {
- @include container;
-}
-.wrapper-content {
- @include row;
-}
-#main-content{
- @include column(12);
-	margin-top:34px;
-}
-#main-content.sidebar {
- @include column(8);
-}
-#sidebar{ 
- @include column(4);
- margin-top: 34px; 
-}
-#wrapper-wide-main {
- 
-}
 #wrapper-wide-footer {
 	text-align: center;
 	font-size: 12px;
 }
 #wrapper-wide-masterhead {
-	border-top: 8px solid $altColor;
+	border-top: 4px solid $altColor;
 }
 /*-----------------------------------------
    Masterhead
 ----------------------------------------- */ 
 #masterhead {
 	padding: 0; 
-	margin-bottom: 24px;
 	font-size: 0.9em;
 	font-weight: bold;
 	.wrapper-content-inner {
@@ -171,7 +136,7 @@ body {
 }
 
 /*-----------------------------------------
-   Header
+   HEADER
 ----------------------------------------- */
 #header {
   border-bottom: $borderSize solid $borderColor;
@@ -179,7 +144,7 @@ body {
 
 #site-title-container {
 	position:absolute;
-	margin-top: -49px;
+	margin-top: -20px;
 	@media only screen and (max-width: 767px) {
 		float: none !important;
 		position:relative;
@@ -194,16 +159,22 @@ h2#site-title {
 #primary-menu {
 	margin-top: 40px;
 	float:left;
-	ul.menu { 
+	ul.nav-bar { 
 		list-style: none; 
-		
+		border: none;
 		display:block;
 		font-weight: 400;
-		font-size: 1.125em;
+		font-size: 1.125em; 
+		margin-top: 36px;
+		margin-bottom: 0px;
+		height: 13px;
 		@extend .uppercase_font_style;
 		li {
 			float:left;
-			margin-left: 12px;
+			margin-left: 18px;
+			border: none;
+			line-height: 13px; 
+			font-size: 11px;
 			&:first-child {
 				margin-left: 0px; 
 			};
@@ -212,19 +183,23 @@ h2#site-title {
 			background: none;
 			background-color: transparent;
 			color: $altColor;
+			
 		}
 		a { padding: 10px 10px 10px 0;}    
 	}
 	
 	@media only screen and (max-width: 767px) {
+
+		@include menu_vertical();
 		padding: 0;
 		margin: 24px 0 0 0; 
 		display:block;
 		float:none !important;
-		@include menu_vertical(); 
-		ul.menu {
+		height: auto; 
+		ul.nav-bar {
 			width:100%;
-			text-align: center;
+			text-align: center; 
+			height: auto;
 			li {width:100%;border-top:1px solid $borderColor;}
 			a { padding: 10px 20px 10px 20px;}
 		}
@@ -243,7 +218,7 @@ h2#site-title {
 	}
 }
 /*-----------------------------------------
-   Footer
+   FOOTER
 ----------------------------------------- */ 
 #footer { 
 	margin-top: 60px;
@@ -290,7 +265,7 @@ body#home {
  
 }
 /** -- Product index ------------------------*/ 
-ul.list-view {
+ul.block-grid-products {
 	li.entry {
 	 	@media only screen and (max-width: 767px) {
 			max-width: 334px;
@@ -300,12 +275,12 @@ ul.list-view {
 	.entry-thumb {
 	  border: $borderSize solid $borderColor;
 		background: #FFFFFF;
-		
 	}
 	h2.entry-title {
+		font-size: $baseFontSize;
 		a {
-			font-weight: 700;
-			span.product-title { font-size: .7em; font-weight: 400;}
+			font-weight: 700; 
+			span.product-title { font-size: .8em; font-weight: 400;}
 			span.product-price { float:right; font-weight: 400;}
 		}
 	}
@@ -328,7 +303,9 @@ h2#product-variants-title {
  	border: $borderSize solid $borderColor;
 	background: white; 
 }
-
+h5.product-section-title {
+	border-bottom: 1px solid $borderColor;;
+}
 input[type=submit],
 button,
 a.button {

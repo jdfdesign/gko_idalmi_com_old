@@ -1,6 +1,5 @@
-//= require gko_public_all 
 //= require gko_store_public_all
-//= require twitter/bootstrap.js
+
 
 jQuery(document).ready(function ($) {
 
