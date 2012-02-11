@@ -11,7 +11,12 @@ $borderSize: 6px;
 @import "gko_public_all";
 @import "gko/store"; 
 @import "gko/elastislide";
-@import "twitter/bootstrap/carousel"; 
+@import "twitter/bootstrap/carousel";
+
+// Core variables and mixins
+//@import "twitter/bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+//@import "twitter/bootstrap/mixins";
+//@import "twitter/bootstrap/forms"; 
 /*-----------------------------------------
    Shared Styles
 ----------------------------------------- */ 
@@ -229,13 +234,19 @@ h2#site-title {
 	}
 }
 #pipe-menu {
-	ul.menu {
-		letter-spacing: 0px;
-		list-style: none; 
-		@include menu_vertical();
-		li {
-
-		}
+	@include menu_vertical();
+	padding: 0;
+	margin: 0; 
+	display:block;
+	float:none !important;
+	height: auto; 
+	ul.nav-bar {
+		width:100%;
+		text-align: center; 
+		height: auto;
+		border:none;
+		li { width: 100%; border:none; line-height: 12px;}
+		a { padding: 0px;}
 	}
 	@media only screen and (max-width: 767px) {
 		padding: 0;
@@ -244,7 +255,7 @@ h2#site-title {
 		float: left;
 		
 		 
-		ul.menu {
+		ul.nav-bar {
 			width:100%;
 			text-align: center; 
 			position: static; 
@@ -264,6 +275,32 @@ body#home {
 	
 	h3 { color:$altColor;}
  
+}
+#home-orbit {
+	height: 450px;
+	
+	.infos {
+		position:absolute;
+		bottom: 0;
+		left:0;
+		right:0;
+		padding: 12px;
+		background: rgba(255,255,255,.7);
+	}
+	
+	.content {
+		border: $borderSize solid $borderColor; 
+	}
+}
+ul.block-grid {
+	h2.entry-title {
+		font-size: $baseFontSize;
+	}
+}
+form.appointment {
+	input, textarea {
+		width: 100%;
+	}
 }
 /** -- Product index ------------------------*/ 
 ul.block-grid-products {

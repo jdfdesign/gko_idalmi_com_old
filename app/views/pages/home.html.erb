@@ -12,16 +12,28 @@
 <% end %> 
 <div class="row">
   <section class="four columns">
-    <h3><%= "Title column 1".html_safe %></h3>
+    <h3><%= "I comme Idalmi".html_safe %></h3>
     <%= "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte".html_safe %>  
   </section>
   <section class="four columns">
-    <h3><%= "Title column 2".html_safe %></h3>
+    <h3><%= "St Barth Nail Bar".html_safe %></h3>
     <%= "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte".html_safe %>  
   </section>
   <section class="four columns"> 
-    <h3><%= "Newsletter".html_safe %></h3>
-    <%= "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte".html_safe %>   				
+    
+    <div class="panel">
+    <h3><%= "Rester informé !".html_safe %></h3>
+    <%= "S'abonner à la newsletter d'Idalmi".html_safe %> 
+    <%= simple_form_for(:inquiry, :url => inquiries_path, 
+      :html => {:method => :post, :class => [:nice, :custom, :appointment]}) do |form| %>
+      <%= hidden_field_tag(:return_to, request.url) %>
+      <%= form.hidden_field :site_id, :value => site.id %>
+      <%= form.input :email, :hint => false, :label => false, :placeholder => "email" %>
+      <div class='buttons'>
+        <%= form.button :submit, t("send_inquiry"), :class => "btn submit" %>
+      </div> 
+    <% end %> 
+    </div> 				
   </section>
 </div> 
 <% end %>

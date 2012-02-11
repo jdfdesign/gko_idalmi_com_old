@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="twelve column">
+   <%= page_title(resource.title) %> 
+  </div>
+</div>
+<div class="row">
+
+  <div class="seven column">
+    <% if resource.body.present? %>
+      <div class="page_content">
+        <%= resource_body_tag do %>
+          <%= render_html_text(resource.body) %>
+        <% end %> 
+      </div> 
+    <% end %>
+  </div> 
+  <div class="five column">
+      <%= render :partial => "shared/appointment_form" %>
+  </div>
+</div>
