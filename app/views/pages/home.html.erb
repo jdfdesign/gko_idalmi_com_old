@@ -4,8 +4,8 @@
 %>
 <% content_for :page_content do %>
 <% if @features.any? %>
-<div class="row" id="features">
-  <div class="twelve columns">
+<div class="row">
+  <div class="twelve column"  id="home-orbit">
     <%= render 'shared/features', :features => @features %>
   </div>
 </div>

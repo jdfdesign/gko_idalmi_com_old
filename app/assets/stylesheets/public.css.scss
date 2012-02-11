@@ -11,6 +11,7 @@ $borderSize: 6px;
 @import "gko_public_all";
 @import "gko/store"; 
 @import "gko/elastislide";
+@import "twitter/bootstrap/carousel"; 
 /*-----------------------------------------
    Shared Styles
 ----------------------------------------- */ 
@@ -352,9 +353,6 @@ a.button {
 		}
 	}
 } 
-
-
-
 
 #cart-subtotal {
 	h3 { float:right;}
