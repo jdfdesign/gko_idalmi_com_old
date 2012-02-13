@@ -4,22 +4,22 @@
 %>
 <% content_for :page_content do %>
 <% if @features.any? %>
-<div class="row">
-  <div class="twelve column"  id="home-orbit">
+<div class="row-fluid">
+  <div class="span12"  id="home-orbit">
     <%= render 'shared/features', :features => @features %>
   </div>
 </div>
 <% end %> 
-<div class="row">
-  <section class="four columns">
+<div class="row-fluid">
+  <section class="span4">
     <h3><%= "I comme Idalmi".html_safe %></h3>
     <%= "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte".html_safe %>  
   </section>
-  <section class="four columns">
+  <section class="span4">
     <h3><%= "St Barth Nail Bar".html_safe %></h3>
     <%= "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte".html_safe %>  
   </section>
-  <section class="four columns"> 
+  <section class="span4"> 
     
     <div class="panel">
     <h3><%= "Rester informé !".html_safe %></h3>

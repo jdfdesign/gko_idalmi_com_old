@@ -1,21 +1,23 @@
-<div id='wrapper-wide-footer' class='wrapper-wide' data-role='footer'>
-  <footer id='footer' class='wrapper-content row'>
-    <div class="four columns">
+<div id='wrapper-wide-footer' class='container-fluid'>
+  <div id='footer' class='row-fluid'>
+    <div class="span4">
       <h3><%= t("Informations") %></h3>
       <%= render(:partial => '/shared/menu', :locals => {:sections => @pipe_menu, :menu_name => "pipe"}) %> 
     </div>
-    <div class="four columns">
+    <div class="span4">
       <h3><%= t("follow_us") %></h3>
       <p><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com/joufdesign&amp;send=false&amp;layout=box_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:62px; height:90px;" allowtransparency="true"></iframe></p>
     </div>
-    <div class="four columns">
+    <div class="span4">
       <h3><%= t("contact_us") %></h3>
       <p><%= "Le coin d'Idalmi<br/>Gustavia 97133 - Saint-Barthélemy<br/>Tel.: +590 (0)590 00 00 00<br/>".html_safe %></p>
     </div>
-  </footer>
-  <div id='site-infos'>
-    <a id='site_by' href='http://www.joufdesign.com' target='_blank'>
-      <%= t(:'site_by', :name => "Jouf Design").html_safe %>
-    </a>
+  </div>
+  <div id='site-infos' class='row-fluid'>
+    <div class="span12">
+      <a id='site_by' href='http://www.joufdesign.com' target='_blank'>
+        <%= t(:'site_by', :name => "Jouf Design").html_safe %>
+      </a>
+    </div>
   </div>
 </div>

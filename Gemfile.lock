@@ -1,8 +1,8 @@
 GIT
   remote: git@github.com:jdfdesign/gko_cms_rails_3.git
-  revision: b43923667050487e27a3ba6cc0aeb5f05cb42012
+  revision: 0b3a0017d44c41b2e846a7ebd04d4d5d472a21ca
   specs:
-    gko_core (0.1.24)
+    gko_core (0.1.26)
       activesupport-slices (= 0.0.2)
       acts_as_indexed (~> 0.7.6)
       bundler (= 1.1.pre.4)
@@ -34,39 +34,39 @@ GIT
 
 GIT
   remote: git@github.com:jdfdesign/gko_cms_rails_3.git
-  revision: b43923667050487e27a3ba6cc0aeb5f05cb42012
+  revision: 0b3a0017d44c41b2e846a7ebd04d4d5d472a21ca
   specs:
-    gko_auth (0.1.24)
+    gko_auth (0.1.26)
       cancan (= 1.6.5)
       devise (= 1.5.1)
       gko_core
-    gko_categories (0.1.24)
+    gko_categories (0.1.26)
       gko_core
-    gko_documents (0.1.24)
+    gko_documents (0.1.26)
       dragonfly (~> 0.9.8)
       gko_core
       mime-types
       rack-cache (>= 0.5.3)
-    gko_features (0.1.24)
+    gko_features (0.1.26)
       dragonfly (~> 0.9.8)
       gko_core
       gko_images
-    gko_images (0.1.24)
+    gko_images (0.1.26)
       dragonfly (~> 0.9.8)
       gko_core
       mime-types
       rack-cache (>= 0.5.3)
-    gko_inquiries (0.1.24)
+    gko_inquiries (0.1.26)
       filters_spam (~> 0.2)
       gko_core
-    gko_stickers (0.1.24)
+    gko_stickers (0.1.26)
       gko_core
 
 GIT
   remote: git@github.com:jdfdesign/gko_store.git
-  revision: ec5f86a2279f9bbf0b8566ed58fb6c9d1d6c8847
+  revision: 737ca11fc6250fe63d9ff5a6e300bb43f1f54a4e
   specs:
-    gko_store (0.0.08)
+    gko_store (0.0.09)
       active_shipping (= 0.9.13)
       activemerchant (= 1.20.1)
       meta_search (= 1.1.1)
@@ -277,13 +277,13 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   gko_auth!
   gko_categories!
-  gko_core (= 0.1.24)!
+  gko_core (= 0.1.26)!
   gko_documents!
   gko_features!
   gko_images!
   gko_inquiries!
   gko_stickers!
-  gko_store (= 0.0.08)!
+  gko_store (= 0.0.09)!
   iconv
   sass-rails (~> 3.1.5.rc1)
   uglifier (>= 1.0.3)
