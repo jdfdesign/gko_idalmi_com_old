@@ -1,5 +1,5 @@
 //= require gko_store_public_all
-//= require twitter/bootstrap/carousel.js 
+//= require gko/jquery.elastidegallery
 
 jQuery(document).ready(function ($) {
 	$('#orbit').orbit({ 
@@ -8,7 +8,10 @@ jQuery(document).ready(function ($) {
 		animationSpeed: 800,
 		timer: true });
 	if($('.product-images:first').length > 0) {
-		Gallery.init();
+		ZoomGallery.init();
+	}
+	if($('.images:first').length > 0) {
+		Gallery.init($('.images:first'));
 	}
  $('.carousel').carousel()
 });

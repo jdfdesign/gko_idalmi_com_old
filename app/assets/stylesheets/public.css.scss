@@ -1,5 +1,3 @@
-@import "gko/variables";
-
 $baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;      
 $textColor: #4F4F4F;
 $altColor: #DD1F26;//red
@@ -17,7 +15,7 @@ $borderSize: 6px;
 @import "gko_public_all";
 @import "gko/store"; 
 @import "gko/elastislide";
-
+@import "zurb/foundation/orbit";
 /*-----------------------------------------
    SHARED STYLES 
 ----------------------------------------- */ 
@@ -36,41 +34,23 @@ $borderSize: 6px;
 	-webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 	-moz-box-shadow: 0 2px 5px rgba(0,0,0,0.25);
 	margin: 0 0 20px 0;
-
 }
 /*-----------------------------------------
  TYPOGRAPHY 
 ----------------------------------------- */
 h1,h2,h3 {
-font-weight: normal;
+   font-weight: normal;
 }
-h1 {
-  font-size: 26px;
-  line-height: $baseLineHeight * 2;
-  small {
-    font-size: 18px;
-  }
-}
-h2 {
-  line-height: $baseLineHeight * 1.5;
-  font-size: 22px;
-  small {
-    font-size: 14px;
-  }
-}
-h3 {
-  line-height: $baseLineHeight * 1.5;
-  font-size: 18px;
-  small {
-    font-size: 14px;
-  }
-}
+
 /*-----------------------------------------
  STRUCTURAL LAYOUT 
 ----------------------------------------- */
 body {
 	font-weight: 300;
 	background: #fefefe;
+} 
+label { 
+	font-size: 13px; 
 }
 .block-grid {
 	.entry-thumb {
@@ -86,49 +66,60 @@ body {
 		}
 	}
 } 
-
-
+/*-----------------------------------------
+ GLOBAL EFFECT
+----------------------------------------- */
+a {
+   @include transition(color .5s linear, background-color .5s linear)
+}
 /*-----------------------------------------
  HEADER
 ----------------------------------------- */
-.navbar {
-	border-top: 4px solid $altColor;
-	 
-	.main-row {
-		position:relative;
-	  border-bottom: $borderSize solid $borderColor;
+.navbar { 
+	.row-fluid {
+		border-bottom: $borderSize solid $borderColor;
+	}
+	font-size: 13px;
+	border-top: 4px solid $altColor; 
+	.header-nav { 
+		
 		.nav > li > a {
 			@extend .uppercase_font_style;   
 		}
 	}
 	.nav-collapse {
-		margin-top:60px;
+		padding-top: 40px;
+		clear: both;
 	}
+}
+.navbar-inner {
+ 
+  
 }
 #store-menu {
 	float:right;
 	margin: 0;
 }
 
-h2#site-title {
+.navbar .brand {
 	@include logo(165px, 59px);
-	position:absolute;
-	left: 0;
-	top: -30px;
+	float: left;
+  margin: 12px 0 0 0;
+  padding: 0;
 }
 /*-----------------------------------------
  FOOTER
 ----------------------------------------- */
-#footer { 
-	margin-top: 60px;
+#footer {
+	text-align: center;
+	font-size: 12px; 
 	border-top: $borderSize solid $borderColor;
 	h3 {
 		@extend .uppercase_font_style;
 	}
-}
-#wrapper-wide-footer {
-	text-align: center;
-	font-size: 12px;
+	.nav {
+		@include vertical-nav;
+	}
 }
 /*-----------------------------------------
  STORE
@@ -136,6 +127,11 @@ h2#site-title {
 .product-info {
 	h1.page-title {
 		border-bottom: $borderSize solid $borderColor;
+	}
+	h4 {
+		@extend .uppercase_font_style; 
+		border-bottom: 1px solid $borderColor; 
+		padding-top: $baseLineHeight; 
 	}
 }
 #product-variants {
@@ -150,26 +146,37 @@ h2#product-variants-title {
  	border: $borderSize solid $borderColor;
 	background: white; 
 }
-h5.product-section-title {
-	border-bottom: 1px solid $borderColor;;
-}
-#cart-subtotal {
-	h3 { float:right;}
-	div { float:right;}
-}
 /*-----------------------------------------
- TABLETS AND BELOW 
+ HOME
 ----------------------------------------- */
+body#home {
+	h3 { color:$altColor;}
+}
+#home-orbit {
+	height: 400px;
+	padding-bottom: $baseLineHeight;
+	
+	.infos {
+		position:absolute;
+		bottom: 0;
+		left:0;
+		right:0;
+		padding: 12px;
+		background: rgba(255,255,255,.7);
+	}
+	
+	.content {
+		border: $borderSize solid $borderColor; 
+	}
+}
+
+/*-----------------------------------------
+ RESPONSIVE
+----------------------------------------- */
+@import "gko/responsive"; 
 @media(max-width: 980px) {
 	#store-menu {
 		float:none;
 	}
-	.nav-collapse {
-		margin-top:0px;
-	}
-	h2#site-title {
-		float: none !important;
-		position:relative;
-		margin: 0 auto; 
-	}
+
 }

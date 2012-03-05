@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120205205221) do
+ActiveRecord::Schema.define(:version => 20120305133218) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -1116,7 +1116,7 @@ ActiveRecord::Schema.define(:version => 20120205205221) do
     t.integer  "count_on_hand",                               :default => 0,     :null => false
     t.decimal  "cost_price",    :precision => 8, :scale => 2
     t.integer  "position"
-    t.string   "title"
+    t.string   "alt_title"
   end
 
   add_index "variants", ["product_id"], :name => "index_variants_on_product_id"

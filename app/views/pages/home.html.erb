@@ -24,14 +24,15 @@
     <div class="panel">
     <h3><%= "Rester informé !".html_safe %></h3>
     <%= "S'abonner à la newsletter d'Idalmi".html_safe %> 
-    <%= simple_form_for(:inquiry, :url => inquiries_path, 
-      :html => {:method => :post, :class => [:nice, :custom, :appointment]}) do |form| %>
+    <%= simple_form_for(:inquiry, :url => inquiries_path, :method => :post,
+      :html => {:class => [:'form-inline', :appointment]}) do |form| %>
       <%= hidden_field_tag(:return_to, request.url) %>
       <%= form.hidden_field :site_id, :value => site.id %>
-      <%= form.input :email, :hint => false, :label => false, :placeholder => "email" %>
-      <div class='buttons'>
-        <%= form.button :submit, t("send_inquiry"), :class => "btn submit" %>
-      </div> 
+      <%= content_tag(:div, :class => "input-prepend") do %>
+        <%= content_tag :span, "@".html_safe, :class => "add-on" %>
+        <%= email_field_tag :email, nil, :placeholder => "email" %>
+      <% end %>
+      <%= button_tag "ok".html_safe, :class => "btn" %>
     <% end %> 
     </div> 				
   </section>
