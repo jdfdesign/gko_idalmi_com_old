@@ -15,7 +15,7 @@ $borderSize: 6px;
 @import "gko_public_all";
 @import "gko/store"; 
 @import "gko/elastislide";
-@import "zurb/foundation/orbit";
+
 /*-----------------------------------------
    SHARED STYLES 
 ----------------------------------------- */ 
@@ -56,6 +56,29 @@ label {
 	.entry-thumb {
 	  border: $borderSize solid $borderColor;
 		background: #FFFFFF;
+		
+		/*display: inline-block;  
+	    text-align: center;  
+	    background: white;  
+	    padding: 5px 10px;  
+	    margin: 0 20px;  
+	    color: #615334;  
+	    text-decoration: none;  
+	    line-height: 5.6em;  */
+	    background: -moz-linear-gradient(center bottom , #DACDB1 11%, #F0E8D8 56%) repeat scroll 0 0 #F0E8D8;  
+	    background: -webkit-gradient(linear,left bottom,left top,color-stop(0.3, #DACDB1),color-stop(0.65, #F0E8D8));  
+	    -moz-box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
+	    -webkit-box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
+	    box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
+	    -moz-transition: all 0.3s ease-out;  
+	    -webkit-transition: all 0.3s ease-out;  
+	    transition: all 0.3s ease-out;
+	
+		&:hover,  
+		&:focus {  
+		    transform: scale(1.2);  
+		    box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 15px #b6a684;  
+		}
 	}
 	h2.entry-title {
 		font-size: $baseFontSize;
@@ -114,6 +137,7 @@ a {
 	text-align: center;
 	font-size: 12px; 
 	border-top: $borderSize solid $borderColor;
+	margin-top: $baseLineHeight;
 	h3 {
 		@extend .uppercase_font_style;
 	}
@@ -121,6 +145,17 @@ a {
 		@include vertical-nav;
 	}
 }
+a#indicators {
+	display: block;
+	background: transparent asset-url("indicators.gif",image) no-repeat scroll 0 1px;
+	background-position: 0 0;
+	width: 213px;
+	height: 114px;
+	
+}
+a#indicators:hover {
+	background-position: 0 -116px;
+};
 /*-----------------------------------------
  STORE
 ----------------------------------------- */

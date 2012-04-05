@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305133218) do
+ActiveRecord::Schema.define(:version => 20120403142357) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -210,6 +210,21 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
     t.string   "gateway_payment_profile_id"
   end
 
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "site_id"
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
   create_table "document_assignments", :force => true do |t|
     t.integer  "position",                      :default => 1, :null => false
     t.integer  "document_id",                                  :null => false
@@ -315,6 +330,8 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "globalized",      :default => 0
+    t.date     "start_at"
+    t.date     "end_at"
   end
 
   add_index "features", ["owner_type", "owner_id"], :name => "index_features_on_owner_type_and_owner_id"
@@ -463,6 +480,18 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
   add_index "line_items", ["order_id"], :name => "index_line_items_on_order_id"
   add_index "line_items", ["variant_id"], :name => "index_line_items_on_variant_id"
 
+  create_table "liquid_models", :force => true do |t|
+    t.integer  "site_id"
+    t.text     "body"
+    t.string   "path"
+    t.string   "format"
+    t.string   "locale"
+    t.string   "handler"
+    t.boolean  "partial",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "log_entries", :force => true do |t|
     t.integer  "source_id"
     t.string   "source_type"
@@ -474,18 +503,7 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
   create_table "mail_methods", :force => true do |t|
     t.integer  "site_id"
     t.string   "environment"
-    t.boolean  "active",                 :default => true
-    t.boolean  "enable_mail_delivery",   :default => true
-    t.string   "mail_host"
-    t.string   "mail_domain"
-    t.integer  "mail_port",              :default => 25
-    t.string   "mail_auth_type"
-    t.string   "smtp_username"
-    t.string   "smtp_password"
-    t.string   "secure_connection_type"
-    t.string   "mails_from"
-    t.string   "mail_bcc"
-    t.string   "intercept_email"
+    t.boolean  "active",      :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -577,8 +595,10 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "globalized",      :default => 0
+    t.integer  "position",        :default => 1
   end
 
+  add_index "partners", ["position", "section_id"], :name => "index_partners_on_position_and_section_id"
   add_index "partners", ["section_id"], :name => "index_partners_on_section_id"
   add_index "partners", ["site_id"], :name => "index_partners_on_site_id"
 
@@ -852,12 +872,13 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
     t.string   "redirect_url"
     t.string   "title_addon"
     t.datetime "published_at"
-    t.boolean  "hidden",           :default => false
+    t.boolean  "hidden",            :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "menu_title"
-    t.integer  "globalized",       :default => 0
+    t.integer  "globalized",        :default => 0
     t.integer  "level"
+    t.boolean  "shallow_permalink", :default => true
   end
 
   add_index "sections", ["link_id", "link_type"], :name => "index_sections_on_link_id_and_link_type"
@@ -954,10 +975,19 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
     t.integer  "globalized",                             :default => 0
     t.text     "plugins"
     t.integer  "site_registrations_count",               :default => 0
+    t.integer  "theme_id"
+    t.string   "logo_mime_type"
+    t.string   "logo_name"
+    t.integer  "logo_size"
+    t.integer  "logo_width"
+    t.integer  "logo_height"
+    t.string   "logo_uid"
+    t.string   "logo_ext"
   end
 
   add_index "sites", ["account_id"], :name => "index_sites_on_account_id"
   add_index "sites", ["host"], :name => "index_sites_on_host", :unique => true
+  add_index "sites", ["theme_id"], :name => "index_sites_on_theme_id"
 
   create_table "state_changes", :force => true do |t|
     t.integer  "stateful_id"
@@ -1043,6 +1073,25 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
 
   add_index "tax_rates", ["site_id"], :name => "index_tax_rates_on_site_id"
 
+  create_table "themes", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "name"
+    t.string   "theme_id"
+    t.string   "author"
+    t.string   "version"
+    t.string   "homepage"
+    t.text     "summary"
+    t.integer  "active"
+    t.string   "document_mime_type"
+    t.string   "document_name"
+    t.integer  "document_size"
+    t.string   "document_uid"
+    t.string   "document_ext"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.text     "settings"
+  end
+
   create_table "tokenized_permissions", :force => true do |t|
     t.integer  "permissable_id"
     t.string   "permissable_type"
@@ -1072,9 +1121,8 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "reset_password_token"
-    t.string   "remember_token"
     t.string   "remember_created_at"
-    t.integer  "sign_in_count"
+    t.integer  "sign_in_count",                           :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -1098,6 +1146,7 @@ ActiveRecord::Schema.define(:version => 20120305133218) do
     t.datetime "locked_at"
     t.integer  "ship_address_id"
     t.integer  "bill_address_id"
+    t.datetime "reset_password_sent_at"
   end
 
   add_index "users", ["account_id"], :name => "index_users_on_account_id"
