@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403142357) do
+ActiveRecord::Schema.define(:version => 20120621133806) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -258,6 +258,7 @@ ActiveRecord::Schema.define(:version => 20120403142357) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "country_id"
+    t.string   "language",           :limit => 5
   end
 
   add_index "document_items", ["country_id"], :name => "index_press_articles_on_country_id"
@@ -879,6 +880,7 @@ ActiveRecord::Schema.define(:version => 20120403142357) do
     t.integer  "globalized",        :default => 0
     t.integer  "level"
     t.boolean  "shallow_permalink", :default => true
+    t.boolean  "no_follow"
   end
 
   add_index "sections", ["link_id", "link_type"], :name => "index_sections_on_link_id_and_link_type"
@@ -983,6 +985,7 @@ ActiveRecord::Schema.define(:version => 20120403142357) do
     t.integer  "logo_height"
     t.string   "logo_uid"
     t.string   "logo_ext"
+    t.string   "default_image_uid"
   end
 
   add_index "sites", ["account_id"], :name => "index_sites_on_account_id"
@@ -1152,6 +1155,17 @@ ActiveRecord::Schema.define(:version => 20120403142357) do
   add_index "users", ["account_id"], :name => "index_users_on_account_id"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
+  create_table "variant_translations", :force => true do |t|
+    t.integer  "variant_id"
+    t.string   "locale"
+    t.string   "alt_title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "variant_translations", ["locale"], :name => "index_variant_translations_on_locale"
+  add_index "variant_translations", ["variant_id"], :name => "index_variant_translations_on_variant_id"
+
   create_table "variants", :force => true do |t|
     t.integer  "product_id"
     t.string   "sku",                                         :default => "",    :null => false
@@ -1166,6 +1180,7 @@ ActiveRecord::Schema.define(:version => 20120403142357) do
     t.decimal  "cost_price",    :precision => 8, :scale => 2
     t.integer  "position"
     t.string   "alt_title"
+    t.integer  "globalized",                                  :default => 0
   end
 
   add_index "variants", ["product_id"], :name => "index_variants_on_product_id"

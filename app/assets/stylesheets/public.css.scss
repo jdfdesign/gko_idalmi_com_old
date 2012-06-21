@@ -52,42 +52,51 @@ body {
 label { 
 	font-size: 13px; 
 }
-.block-grid {
-	.entry-thumb {
-	  border: $borderSize solid $borderColor;
-		background: #FFFFFF;
-		
-		/*display: inline-block;  
-	    text-align: center;  
-	    background: white;  
-	    padding: 5px 10px;  
-	    margin: 0 20px;  
-	    color: #615334;  
-	    text-decoration: none;  
-	    line-height: 5.6em;  */
-	    background: -moz-linear-gradient(center bottom , #DACDB1 11%, #F0E8D8 56%) repeat scroll 0 0 #F0E8D8;  
-	    background: -webkit-gradient(linear,left bottom,left top,color-stop(0.3, #DACDB1),color-stop(0.65, #F0E8D8));  
-	    -moz-box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
-	    -webkit-box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
-	    box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
-	    -moz-transition: all 0.3s ease-out;  
-	    -webkit-transition: all 0.3s ease-out;  
-	    transition: all 0.3s ease-out;
-	
-		&:hover,  
-		&:focus {  
-		    transform: scale(1.2);  
-		    box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 15px #b6a684;  
+.grid > li {
+	.thumbnail {
+		border: none;
+		@include border-radius(0);
+		@include box-shadow(none);
+		.thumbnail-image {
+		  border: $borderSize solid $borderColor;
+			background: #FFFFFF;
+
+			/*display: inline-block;  
+		    text-align: center;  
+		    background: white;  
+		    padding: 5px 10px;  
+		    margin: 0 20px;  
+		    color: #615334;  
+		    text-decoration: none;  
+		    line-height: 5.6em;  */
+		    background: -moz-linear-gradient(center bottom , #DACDB1 11%, #F0E8D8 56%) repeat scroll 0 0 #F0E8D8;  
+		    background: -webkit-gradient(linear,left bottom,left top,color-stop(0.3, #DACDB1),color-stop(0.65, #F0E8D8));  
+		    -moz-box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
+		    -webkit-box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
+		    box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
+		    -moz-transition: all 0.3s ease-out;  
+		    -webkit-transition: all 0.3s ease-out;  
+		    transition: all 0.3s ease-out;
+
+			&:hover,  
+			&:focus {  
+			    transform: scale(1.2);  
+			    box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 15px #b6a684;  
+			}
 		}
-	}
-	h2.entry-title {
-		font-size: $baseFontSize;
-		a {
-			font-weight: 700; 
-			span.product-title { font-size: .8em; font-weight: 400;}
-			span.product-price { float:right; font-weight: 400;}
+		.caption {
+			h2.thumbnail-title {
+				font-size: $baseFontSize;
+				a {
+					font-weight: 700; 
+					span.product-title { font-size: .8em; font-weight: 400;}
+					span.product-price { float:right; font-weight: 400;}
+				}
+			}
 		}
+
 	}
+
 } 
 /*-----------------------------------------
  GLOBAL EFFECT
@@ -125,8 +134,8 @@ a {
 }
 
 .navbar .brand {
-	@include logo(165px, 59px);
-	float: left;
+	@include logo(165px, 113px);
+  float: left;
   margin: 12px 0 0 0;
   padding: 0;
 }
