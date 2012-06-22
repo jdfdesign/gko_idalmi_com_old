@@ -56,6 +56,8 @@ GIT
     gko_inquiries (0.3.09)
       filters_spam (~> 0.2)
       launchy
+    gko_newsletters (0.3.09)
+      createsend (~> 1.0.4)
     gko_stickers (0.3.09)
     gko_themes (0.3.09)
       less-rails-bootstrap
@@ -63,9 +65,9 @@ GIT
 
 GIT
   remote: git@github.com:jdfdesign/gko_store.git
-  revision: 139cd70fee36e167bd6bc02c14e20eb5dba25d36
+  revision: 37fc847e62312c73d919830caaf8afeaf5857bfd
   specs:
-    gko_store (0.0.19)
+    gko_store (0.0.20)
       activemerchant (= 1.21.0)
       state_machine (= 1.1.2)
 
@@ -131,6 +133,10 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     commonjs (0.2.6)
+    createsend (1.0.4)
+      hashie (~> 1.0)
+      httparty (~> 0.8)
+      json
     crummy (1.6.0)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
@@ -153,8 +159,12 @@ GEM
       activerecord (>= 3.0.0)
       paper_trail (~> 2)
     has_scope (0.5.1)
+    hashie (1.2.0)
     highline (1.6.8)
     hike (1.2.1)
+    httparty (0.8.3)
+      multi_json (~> 1.0)
+      multi_xml
     i18n (0.6.0)
     iconv (0.1)
     inherited_resources (1.3.1)
@@ -184,6 +194,7 @@ GEM
     money (3.7.1)
       i18n (~> 0.4)
     multi_json (1.2.0)
+    multi_xml (0.5.1)
     mysql2 (0.3.11)
     nested_set (1.7.0)
       activerecord (>= 3.0.0)
@@ -276,8 +287,9 @@ DEPENDENCIES
   gko_features (= 0.3.09)!
   gko_images (= 0.3.09)!
   gko_inquiries (= 0.3.09)!
+  gko_newsletters (= 0.3.09)!
   gko_stickers (= 0.3.09)!
-  gko_store (= 0.0.19)!
+  gko_store (= 0.0.20)!
   gko_themes (= 0.3.09)!
   iconv
   sass-rails (~> 3.2.5)

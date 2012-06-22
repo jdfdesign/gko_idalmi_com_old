@@ -41,7 +41,12 @@ $borderSize: 6px;
 h1,h2,h3 {
    font-weight: normal;
 }
-
+.partial.products-categories {
+	display:none;
+}
+.partial.metas-categories {
+	display:none;
+}
 /*-----------------------------------------
  STRUCTURAL LAYOUT 
 ----------------------------------------- */
@@ -87,6 +92,17 @@ label {
 		.caption {
 			h2.thumbnail-title {
 				font-size: $baseFontSize;
+			}
+		}
+
+	}
+
+}
+.grid.products > li {
+	.thumbnail {
+		.caption {
+			h2.thumbnail-title {
+				font-size: $baseFontSize;
 				a {
 					font-weight: 700; 
 					span.product-title { font-size: .8em; font-weight: 400;}
@@ -94,9 +110,7 @@ label {
 				}
 			}
 		}
-
 	}
-
 } 
 /*-----------------------------------------
  GLOBAL EFFECT
@@ -124,9 +138,8 @@ a {
 		clear: both;
 	}
 }
-.navbar-inner {
- 
-  
+.nav-collapse .nav > li {
+	margin-left: 24px;
 }
 #store-menu {
 	float:right;

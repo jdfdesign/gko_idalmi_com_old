@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621133806) do
+ActiveRecord::Schema.define(:version => 20120622163823) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -510,6 +510,13 @@ ActiveRecord::Schema.define(:version => 20120621133806) do
   end
 
   add_index "mail_methods", ["site_id"], :name => "index_mail_methods_on_site_id"
+
+  create_table "newsletter_subscribers", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "option_types", :force => true do |t|
     t.string   "name",         :limit => 100

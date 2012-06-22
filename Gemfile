@@ -18,7 +18,9 @@ group :production do
 	gem "gko_features", "= 0.3.09", :git => 'git@github.com:jdfdesign/gko_cms3.git'
 	gem "gko_categories", "= 0.3.09", :git => 'git@github.com:jdfdesign/gko_cms3.git'
 	gem "gko_stickers", "= 0.3.09", :git => 'git@github.com:jdfdesign/gko_cms3.git'
-	gem 'gko_store', '= 0.0.19',  :git => 'git@github.com:jdfdesign/gko_store.git'
+	gem "gko_newsletters", "= 0.3.09", :git => 'git@github.com:jdfdesign/gko_cms3.git'
+	gem 'gko_store', '= 0.0.20',  :git => 'git@github.com:jdfdesign/gko_store.git'
+
 	# to solve undefined method `class_inheritable_accessor' for Quantified::Attribute:Class
 	gem "active_shipping", :git => 'git://github.com/Shopify/active_shipping.git'
 end
@@ -30,6 +32,7 @@ end
 #	gem "gko_inquiries", :path => File.expand_path('~/Github/gko_cms3/gko_inquiries', __FILE__)
 #	gem "gko_themes", :path => File.expand_path('~/Github/gko_cms3/gko_themes', __FILE__)
 #	gem "gko_features", :path => File.expand_path('~/Github/gko_cms3/gko_features', __FILE__)
+#	gem "gko_newsletters", :path => File.expand_path('~/Github/gko_cms3/gko_newsletters', __FILE__)
 #	gem "gko_categories", :path => File.expand_path('~/Github/gko_cms3/gko_categories', __FILE__)
 #	gem "gko_stickers", :path => File.expand_path('~/Github/gko_cms3/gko_stickers', __FILE__)
 #	gem "gko_store", :path => File.expand_path('~/Github/gko/gko_store', __FILE__)
