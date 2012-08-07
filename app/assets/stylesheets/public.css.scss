@@ -1,21 +1,76 @@
+// Grays
+// -------------------------
+$black:                 #000;
+$grayDarker:            #414042;
+$grayDark:              #808285;
+$gray:                  #555;
+$grayLight:             #999;
+$grayLighter:           #eee;
+$white:                 #fff;
+
+
+// Accent colors
+// -------------------------
+$blue:                  #07ABDD;
+$blueDark:              #0064cd;
+$green:                 #46a546;
+$red:                   #DD1F26;
+$yellow:                #ffc40d;
+$orange:                #f89406;
+$pink:                  #c3325f;
+$purple:                #7a43b6;
+
 $baseFontFamily: "proxima-nova-1", "proxima-nova-2", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, "Lucida Grande", sans-serif;      
 $textColor: #4F4F4F;
-$altColor: #DD1F26;//red
+$red: #DD1F26;//red
 $linkColor: #585858;
-$linkColorActive: $altColor;
-$linkColorHover: $altColor;
+$linkColorActive: $red;
+$linkColorHover: $red;
+
+// Dropdowns
+// -------------------------
+$dropdownBackground:            $white;
+$dropdownBorder:                rgba(0,0,0,.2);
+$dropdownLinkColor:             $grayDark;
+$dropdownLinkColorHover:        $white;
+$dropdownLinkBackgroundHover:   $linkColor;
+$dropdownDividerTop:            #e5e5e5;
+$dropdownDividerBottom:         $white;
 
 $navbarText: $textColor;
 $navbarLinkColor: $linkColor;
 $navbarLinkColorHover: $linkColorHover;
 
+
+// Navbar
+// -------------------------
+$navbarHeight:                    40px;
+$navbarBackground:                $white;
+$navbarBackgroundHighlight:       $white;
+
+$navbarText:                      $grayDark;
+$navbarLinkColor:                 $grayDark;
+$navbarLinkColorHover:            $red;
+$navbarLinkColorActive:           $navbarLinkColorHover;
+$navbarLinkBackgroundHover:       transparent;
+$navbarLinkBackgroundActive:      $navbarBackground;
+
+$navbarSearchBackground:          lighten($navbarBackground, 25%);
+$navbarSearchBackgroundFocus:     $white;
+$navbarSearchBorder:              darken($navbarSearchBackground, 30%);
+$navbarSearchPlaceholderColor:    #ccc;
+$navbarBrandColor:                $navbarLinkColor;
+
 $borderColor: #fafafa;
 $borderSize: 6px;
 
-@import "gko_public_all";
-@import "gko/store"; 
-@import "gko/elastislide";
-
+//@import "gko_public_all";
+//@import "gko/store"; 
+//@import "gko/elastislide";
+@import "twitter/bootstrap";
+@import "gko/mixin.1.0.0";
+@import "gko/grid";
+@import "gko/store";
 /*-----------------------------------------
    SHARED STYLES 
 ----------------------------------------- */ 
@@ -41,21 +96,45 @@ $borderSize: 6px;
 h1,h2,h3 {
    font-weight: normal;
 }
-.partial.products-categories {
-	display:none;
-}
-.partial.metas-categories {
-	display:none;
-}
+
 /*-----------------------------------------
  STRUCTURAL LAYOUT 
 ----------------------------------------- */
 body {
 	font-weight: 300;
 	background: #fefefe;
+	border-top: 4px solid $red; 
+}
+.navbar,
+.container-fluid {
+	max-width: 1020px;
+	@include box-sizing(border-box);
+	@include center-block();
 } 
 label { 
 	font-size: 13px; 
+}
+.parent-categories {
+	margin: 0 0 $baseLineHeight 0;
+	ul.nav {
+		@include center-nav();
+	}
+	ul.nav > li > a {
+		text-transform: uppercase;
+		color: $navbarLinkColor;
+		text-transform: capitalize;
+		font-weight: 500;
+		text-shadow: 0px 1px 0 white;
+		&:hover {
+			color: $navbarLinkColorHover;
+		};
+	}
+	ul.nav > li.active > a {
+		color: $navbarLinkColorHover;
+		&:hover {
+			color: $navbarLinkColorActive;
+		};
+	}
 }
 .grid > li {
 	.thumbnail {
@@ -63,60 +142,35 @@ label {
 		@include border-radius(0);
 		@include box-shadow(none);
 		.thumbnail-image {
-		  border: $borderSize solid $borderColor;
-			background: #FFFFFF;
-
-			/*display: inline-block;  
-		    text-align: center;  
-		    background: white;  
-		    padding: 5px 10px;  
-		    margin: 0 20px;  
-		    color: #615334;  
-		    text-decoration: none;  
-		    line-height: 5.6em;  */
-		    background: -moz-linear-gradient(center bottom , #DACDB1 11%, #F0E8D8 56%) repeat scroll 0 0 #F0E8D8;  
-		    background: -webkit-gradient(linear,left bottom,left top,color-stop(0.3, #DACDB1),color-stop(0.65, #F0E8D8));  
-		    -moz-box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
-		    -webkit-box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
-		    box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 1px #816F47;  
-		    -moz-transition: all 0.3s ease-out;  
-		    -webkit-transition: all 0.3s ease-out;  
-		    transition: all 0.3s ease-out;
-
-			&:hover,  
-			&:focus {  
-			    transform: scale(1.2);  
-			    box-shadow: 0 0 65px #CDBE9F inset, 0 0 20px #BEAE8C inset, 0 0 15px #b6a684;  
-			}
+			padding: $borderSize;
+			border: $borderSize solid $borderColor;
+			background: #FFFFFF; 
+		    @include transition(all 0.3s ease-out);
 		}
-		.caption {
-			h2.thumbnail-title {
-				font-size: $baseFontSize;
-			}
+		h2.thumbnail-title,
+		h2.thumbnail-title a {
+			font-size: $baseFontSize;
+			font-weight: 700; 
 		}
-
+		&:hover,  
+		&:focus { 
+			.thumbnail-image {
+				@include box-shadow(0 0 25px $grayLight);
+			}
+			h2.thumbnail-title,
+			h2.thumbnail-title a {
+				color: $red;
+			} 
+		}
 	}
-
 }
-.grid.products > li {
-	.thumbnail {
-		.caption {
-			h2.thumbnail-title {
-				font-size: $baseFontSize;
-				a {
-					font-weight: 700; 
-					span.product-title { font-size: .8em; font-weight: 400;}
-					span.product-price { float:right; font-weight: 400;}
-				}
-			}
-		}
-	}
-} 
+
+
 /*-----------------------------------------
  GLOBAL EFFECT
 ----------------------------------------- */
 a {
-   @include transition(color .5s linear, background-color .5s linear)
+   @include transition('color .5s linear, background-color .5s linear')
 }
 /*-----------------------------------------
  HEADER
@@ -126,32 +180,41 @@ a {
 		border-bottom: $borderSize solid $borderColor;
 	}
 	font-size: 13px;
-	border-top: 4px solid $altColor; 
-	.header-nav { 
-		
-		.nav > li > a {
-			@extend .uppercase_font_style;   
-		}
-	}
-	.nav-collapse {
-		padding-top: 40px;
-		clear: both;
-	}
+	
+}
+.nav-collapse .nav {
+	@include clearfix;
 }
 .nav-collapse .nav > li {
 	margin-left: 24px;
+	border-bottom: 1px solid $borderColor;
 }
-#store-menu {
-	float:right;
-	margin: 0;
+.navbar .nav > li > a {
+	text-shadow: none;
+	@extend .uppercase_font_style;
+	.text {
+		display:inline-block;
+	    @include ie7-inline-block();
+	}
 }
 
 .navbar .brand {
-	@include logo(165px, 113px);
-  float: left;
-  margin: 12px 0 0 0;
-  padding: 0;
+	float: none;
+	text-align: center;
+	a {
+		padding: 0;
+		margin: 0 auto;
+		background: transparent image-url("logo.png") center center no-repeat;
+		background-size: contain;
+		cursor: pointer;
+		text-decoration: none;
+		display: block;
+		width: 130px;
+		height: 130px;
+		@include hide-text;
+	}
 }
+
 /*-----------------------------------------
  FOOTER
 ----------------------------------------- */
@@ -163,20 +226,17 @@ a {
 	h3 {
 		@extend .uppercase_font_style;
 	}
-	.nav {
-		@include vertical-nav;
-	}
 }
 a#indicators {
 	display: block;
 	background: transparent asset-url("indicators.gif",image) no-repeat scroll 0 1px;
 	background-position: 0 0;
-	width: 213px;
-	height: 114px;
+	width: 208px;
+	height: 49px;
 	
 }
 a#indicators:hover {
-	background-position: 0 -116px;
+	background-position: 0 -49px;
 };
 /*-----------------------------------------
  STORE
@@ -196,6 +256,13 @@ a#indicators:hover {
 		display: inline-block;
 	} 
 } 
+table#product-properties {
+	width: 100%;
+	margin-bottom: $baseLineHeight;
+	td {
+		padding: 8px 0;
+	}
+}
 h2#product-variants-title {
 	border-bottom: $borderSize solid $borderColor;
 }
@@ -203,11 +270,15 @@ h2#product-variants-title {
  	border: $borderSize solid $borderColor;
 	background: white; 
 }
+.products-thumbnails ul li a img {
+ 	border: $borderSize solid $borderColor;
+	background: white;
+}
 /*-----------------------------------------
  HOME
 ----------------------------------------- */
 body#home {
-	h3 { color:$altColor;}
+	h3 { color:$red;}
 }
 #home-orbit {
 	height: 400px;
@@ -230,10 +301,57 @@ body#home {
 /*-----------------------------------------
  RESPONSIVE
 ----------------------------------------- */
-@import "gko/responsive"; 
-@media(max-width: 980px) {
-	#store-menu {
-		float:none;
-	}
+@import "twitter/bootstrap/responsive";
 
+@media (max-width: 979px) {
+	// Nav and dropdown links in navbar
+	.nav-collapse nav,
+	.nav-collapse .nav {
+		@include clearfix();
+	}
+	
+	.nav-collapse .nav > li,
+	.nav-collapse .dropdown-menu li {
+	  	margin-left: 24px;
+		border-bottom: 1px solid $navbarLinkColor;
+	}
+	.nav-collapse .dropdown-menu li:last-child {
+		border-bottom: none;
+	}
+	
+	.nav-collapse .nav > li > a,
+	.nav-collapse .dropdown-menu a {
+	  font-weight: normal;
+	  @include border-radius(0);
+	}
+	.nav-collapse .dropdown-menu a:hover {
+	  	background-color: $navbarLinkBackgroundHover; // "transparent" is default to differentiate :hover from .active
+		color: $navbarLinkColorHover;
+	}
+}
+@media (min-width: 980px) {
+	.nav-collapse {
+		float: left;
+		margin-top: 38px;
+	}
+	/* Main menu settings */
+	nav#primary-menu {
+		float: left;
+		ul.nav {
+			> li {
+				border-bottom: none;
+			}
+			> li > a {
+				@include transition(all 0.3s ease-in-out);
+			}
+		}
+	}
+	#store-menu-container,
+	#store-menu {
+		float: right;
+	}
+	.navbar .brand {
+	  margin: 12px 0 0 0;
+	  padding: 0;
+	}
 }

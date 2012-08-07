@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622163823) do
+ActiveRecord::Schema.define(:version => 20120802180433) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -97,8 +97,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.text    "body"
     t.string  "meta_title"
     t.text    "meta_description"
-    t.text    "meta_keywords"
-    t.integer "globalized",       :default => 0
   end
 
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
@@ -121,7 +119,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.string   "meta_title"
     t.text     "meta_description"
     t.text     "body"
-    t.text     "meta_keywords"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -147,7 +144,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.string   "meta_title"
     t.text     "meta_description"
     t.text     "body"
-    t.text     "meta_keywords"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -169,15 +165,15 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.string   "layout",           :limit => 40
     t.string   "meta_title"
     t.text     "meta_description"
-    t.text     "meta_keywords"
     t.text     "options"
     t.string   "author_name",      :limit => 120
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "globalized",                      :default => 0
     t.integer  "position",                        :default => 1
+    t.integer  "access_count",                    :default => 0
   end
 
+  add_index "contents", ["access_count"], :name => "index_contents_on_access_count"
   add_index "contents", ["position", "section_id"], :name => "index_contents_on_position_and_section_id"
   add_index "contents", ["section_id"], :name => "index_contents_on_section_id"
   add_index "contents", ["site_id"], :name => "index_contents_on_site_id"
@@ -208,21 +204,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.integer  "address_id"
     t.string   "gateway_customer_profile_id"
     t.string   "gateway_payment_profile_id"
-  end
-
-  create_table "delayed_jobs", :force => true do |t|
-    t.integer  "site_id"
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
-    t.text     "handler"
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
   end
 
   create_table "document_assignments", :force => true do |t|
@@ -291,7 +272,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.integer  "document_size"
     t.string   "document_uid"
     t.string   "document_ext"
-    t.integer  "globalized",                                :default => 0
     t.integer  "author_id"
   end
 
@@ -330,7 +310,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.string   "image_ext"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "globalized",      :default => 0
     t.date     "start_at"
     t.date     "end_at"
   end
@@ -378,25 +357,15 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
   add_index "image_folders", ["parent_id"], :name => "index_image_folders_on_parent_id"
   add_index "image_folders", ["site_id"], :name => "index_image_folders_on_site_id"
 
-  create_table "image_stickers", :force => true do |t|
-    t.string   "name"
-    t.integer  "site_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "image_stickers", ["name"], :name => "index_image_stickers_on_name"
-  add_index "image_stickers", ["site_id"], :name => "index_image_stickers_on_site_id"
-
-  create_table "image_stickings", :force => true do |t|
-    t.integer  "sticker_id"
+  create_table "image_folders_images", :id => false, :force => true do |t|
+    t.integer  "image_folder_id"
     t.integer  "image_id"
-    t.integer  "image_stickings_count", :default => 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "image_stickings", ["sticker_id", "image_id"], :name => "index_image_stickings_on_sticker_id_and_image_id"
+  add_index "image_folders_images", ["image_folder_id", "image_id"], :name => "index_image_folders_images_on_image_folder_id_and_image_id"
+  add_index "image_folders_images", ["image_id", "image_folder_id"], :name => "index_image_folders_images_on_image_id_and_image_folder_id"
 
   create_table "image_translations", :force => true do |t|
     t.integer  "image_id"
@@ -426,13 +395,10 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.integer  "image_height"
     t.string   "image_uid"
     t.string   "image_ext"
-    t.integer  "globalized",                             :default => 0
-    t.integer  "image_folder_id"
   end
 
   add_index "images", ["account_id"], :name => "index_images_on_account_id"
   add_index "images", ["author_id"], :name => "index_images_on_author_id"
-  add_index "images", ["image_folder_id"], :name => "index_images_on_image_folder_id"
   add_index "images", ["site_id"], :name => "index_images_on_site_id"
 
   create_table "inquiries", :force => true do |t|
@@ -602,7 +568,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.string   "image_ext"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "globalized",      :default => 0
     t.integer  "position",        :default => 1
   end
 
@@ -684,12 +649,23 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
   create_table "product_properties", :force => true do |t|
     t.integer  "product_id"
     t.integer  "property_id"
-    t.string   "value"
+    t.string   "presentation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "product_properties", ["product_id"], :name => "index_product_properties_on_product_id"
+
+  create_table "product_property_translations", :force => true do |t|
+    t.integer  "product_property_id"
+    t.string   "locale"
+    t.string   "presentation"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "product_property_translations", ["locale"], :name => "index_product_property_translations_on_locale"
+  add_index "product_property_translations", ["product_property_id"], :name => "index_827806ffd4778407c35215189d8230bca632b9b7"
 
   create_table "product_scopes", :force => true do |t|
     t.integer "product_group_id"
@@ -707,7 +683,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.string   "slug"
     t.string   "meta_description"
     t.text     "body"
-    t.string   "meta_keywords"
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -729,10 +704,8 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.datetime "deleted_at"
     t.string   "meta_title"
     t.string   "meta_description"
-    t.string   "meta_keywords"
     t.boolean  "variants_listed",      :default => false
     t.integer  "count_on_hand",        :default => 0,     :null => false
-    t.integer  "globalized",           :default => 0
   end
 
   add_index "products", ["available_on"], :name => "index_products_on_available_on"
@@ -783,11 +756,10 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
 
   create_table "properties", :force => true do |t|
     t.string   "name"
-    t.string   "presentation",                :null => false
+    t.string   "presentation", :null => false
     t.integer  "site_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "globalized",   :default => 0
   end
 
   add_index "properties", ["site_id"], :name => "index_properties_on_site_id"
@@ -849,7 +821,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.string   "meta_title"
     t.text     "meta_description"
     t.text     "body"
-    t.text     "meta_keywords"
     t.string   "title"
     t.string   "title_addon"
     t.datetime "created_at"
@@ -876,7 +847,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.text     "body"
     t.string   "meta_title"
     t.text     "meta_description"
-    t.text     "meta_keywords"
     t.string   "redirect_url"
     t.string   "title_addon"
     t.datetime "published_at"
@@ -884,7 +854,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "menu_title"
-    t.integer  "globalized",        :default => 0
     t.integer  "level"
     t.boolean  "shallow_permalink", :default => true
     t.boolean  "no_follow"
@@ -893,22 +862,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
   add_index "sections", ["link_id", "link_type"], :name => "index_sections_on_link_id_and_link_type"
   add_index "sections", ["parent_id"], :name => "index_sections_on_parent_id"
   add_index "sections", ["site_id"], :name => "index_sections_on_site_id"
-
-  create_table "settings", :force => true do |t|
-    t.integer  "site_id"
-    t.string   "name"
-    t.text     "value"
-    t.boolean  "destroyable",             :default => true
-    t.string   "scoping"
-    t.boolean  "restricted",              :default => false
-    t.string   "callback_proc_as_string"
-    t.string   "form_value_type",         :default => "text_area", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "settings", ["name"], :name => "index_settings_on_name"
-  add_index "settings", ["site_id"], :name => "index_settings_on_site_id"
 
   create_table "shipments", :force => true do |t|
     t.integer  "order_id"
@@ -981,7 +934,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.text     "options"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "globalized",                             :default => 0
     t.text     "plugins"
     t.integer  "site_registrations_count",               :default => 0
     t.integer  "theme_id"
@@ -1035,7 +987,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "globalized", :default => 0
   end
 
   add_index "stickers", ["name"], :name => "index_stickers_on_name"
@@ -1187,7 +1138,6 @@ ActiveRecord::Schema.define(:version => 20120622163823) do
     t.decimal  "cost_price",    :precision => 8, :scale => 2
     t.integer  "position"
     t.string   "alt_title"
-    t.integer  "globalized",                                  :default => 0
   end
 
   add_index "variants", ["product_id"], :name => "index_variants_on_product_id"
