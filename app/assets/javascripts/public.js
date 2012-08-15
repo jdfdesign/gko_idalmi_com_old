@@ -1,5 +1,4 @@
 //= require gko_store_public_all
-//= require gko/jquery.elastidegallery
 $(document).ready(function() {
 	function init() {
 		if($('.product-images:first').length > 0) {
