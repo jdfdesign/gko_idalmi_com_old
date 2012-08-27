@@ -10,13 +10,13 @@ GIT
 
 GIT
   remote: git@github.com:jdfdesign/gko_cms3.git
-  revision: bd06c993500bed8f161602f19ab2f08d8e394bd1
+  revision: 10b460864bbd969aa95eaffffccfd446f986d7fd
   specs:
-    gko_auth (0.3.72)
+    gko_auth (0.3.73)
       cancan (= 1.6.8)
       devise (= 2.1.2)
-    gko_categories (0.3.72)
-    gko_core (0.3.72)
+    gko_categories (0.3.73)
+    gko_core (0.3.73)
       RedCloth (= 4.2.9)
       activesupport-slices (= 0.0.2)
       acts_as_indexed (~> 0.7.7)
@@ -52,26 +52,26 @@ GIT
       uglifier (>= 1.0.3)
       uuid (= 2.3.5)
       will_paginate (~> 3.0.2)
-    gko_documents (0.3.72)
+    gko_documents (0.3.73)
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
-    gko_features (0.3.72)
-    gko_images (0.3.72)
-    gko_inquiries (0.3.72)
+    gko_features (0.3.73)
+    gko_images (0.3.73)
+    gko_inquiries (0.3.73)
       filters_spam (~> 0.2)
       launchy
-    gko_newsletters (0.3.72)
+    gko_newsletters (0.3.73)
       createsend (~> 1.0.4)
-    gko_stickers (0.3.72)
-    gko_themes (0.3.72)
+    gko_stickers (0.3.73)
+    gko_themes (0.3.73)
       less-rails-bootstrap
       rubyzip (= 0.9.6.1)
 
 GIT
   remote: git@github.com:jdfdesign/gko_store.git
-  revision: 482db72781c6d7ea09d13af19ad2debac9534873
+  revision: cef9d678f1161a3fa8bb549930f2424d237243d9
   specs:
-    gko_store (0.0.40)
+    gko_store (0.0.41)
       activemerchant (= 1.21.0)
       state_machine (= 1.1.2)
 
@@ -295,17 +295,17 @@ PLATFORMS
 DEPENDENCIES
   active_shipping!
   coffee-rails (~> 3.2.2)
-  gko_auth (= 0.3.72)!
-  gko_categories (= 0.3.72)!
-  gko_core (= 0.3.72)!
-  gko_documents (= 0.3.72)!
-  gko_features (= 0.3.72)!
-  gko_images (= 0.3.72)!
-  gko_inquiries (= 0.3.72)!
-  gko_newsletters (= 0.3.72)!
-  gko_stickers (= 0.3.72)!
-  gko_store (= 0.0.40)!
-  gko_themes (= 0.3.72)!
+  gko_auth (= 0.3.73)!
+  gko_categories (= 0.3.73)!
+  gko_core (= 0.3.73)!
+  gko_documents (= 0.3.73)!
+  gko_features (= 0.3.73)!
+  gko_images (= 0.3.73)!
+  gko_inquiries (= 0.3.73)!
+  gko_newsletters (= 0.3.73)!
+  gko_stickers (= 0.3.73)!
+  gko_store (= 0.0.41)!
+  gko_themes (= 0.3.73)!
   iconv
   sass-rails (~> 3.2.5)
   uglifier (>= 1.0.3)

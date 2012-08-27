@@ -1865,7 +1865,7 @@ table .span24 {
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url(/assets/twitter/bootstrap/glyphicons-halflings.png);
+  background-image: url(/assets/twitter/bootstrap/glyphicons-halflings-2ed0cba6eca0f44737ab78f1e58bc11e.png);
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -1877,7 +1877,7 @@ table .span24 {
 
 /* line 29, ../../../../.rvm/gems/ruby-1.8.7-p358@global/bundler/gems/gko_cms3-10b460864bbd/gko_core/vendor/assets/stylesheets/twitter/bootstrap/_sprites.scss */
 .icon-white {
-  background-image: url(/assets/twitter/bootstrap/glyphicons-halflings-white.png);
+  background-image: url(/assets/twitter/bootstrap/glyphicons-halflings-white-4fbb6a0b9b4e61912f486ac494a858f1.png);
 }
 
 /* line 33, ../../../../.rvm/gems/ruby-1.8.7-p358@global/bundler/gems/gko_cms3-10b460864bbd/gko_core/vendor/assets/stylesheets/twitter/bootstrap/_sprites.scss */
@@ -5858,7 +5858,7 @@ aside > section {
   position: absolute;
   top: 50%;
   left: 12px;
-  background: transparent url(/assets/gko/nav_thumbnail.png) no-repeat top left;
+  background: transparent url(/assets/gko/nav_thumbnail-cfedeb24fd08deec3df59fda7521ae51.png) no-repeat top left;
   width: 14px;
   height: 26px;
   margin-top: -13px;
@@ -5917,7 +5917,7 @@ h2#product-variants-title {
   position: absolute;
   top: 50%;
   left: 50%;
-  background: black url(/assets/gko/ajax-loader.gif) no-repeat center center;
+  background: black url(/assets/gko/ajax-loader-9182750f3cf6d240d5e4b497d2dae2dc.gif) no-repeat center center;
   margin: -23px 0px 0px -23px;
   z-index: 100;
   -webkit-border-radius: 10;
@@ -6175,7 +6175,7 @@ a {
 .navbar .brand a {
   padding: 0;
   margin: 0 auto;
-  background: transparent url(/assets/logo.png) center center no-repeat;
+  background: transparent url(/assets/logo-dbfcb60dbc44bab0f09eda16eb8d7d5d.png) center center no-repeat;
   background-size: contain;
   cursor: pointer;
   text-decoration: none;
@@ -6203,7 +6203,7 @@ a {
 /* line 230, ../../app/assets/stylesheets/public.css.scss */
 a#indicators {
   display: block;
-  background: transparent url(/assets/indicators.gif) no-repeat scroll 0 1px;
+  background: transparent url(/assets/indicators-39f91eb17717af1b6875375ecd67c5ea.gif) no-repeat scroll 0 1px;
   background-position: 0 0;
   width: 208px;
   height: 49px;
