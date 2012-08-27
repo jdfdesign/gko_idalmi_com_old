@@ -11,13 +11,13 @@ GIT
 
 GIT
   remote: git@github.com:jdfdesign/gko_cms3.git
-  revision: 328c402da8f63830affb850d0eb06d5a01b1c31b
+  revision: 8e22a9fb0b60c0a3c2f69e28bc1cbb81f946ec93
   specs:
-    gko_auth (0.3.76)
+    gko_auth (0.3.77)
       cancan (= 1.6.8)
       devise (= 2.1.2)
-    gko_categories (0.3.76)
-    gko_core (0.3.76)
+    gko_categories (0.3.77)
+    gko_core (0.3.77)
       RedCloth (= 4.2.9)
       activesupport-slices (= 0.0.2)
       acts_as_indexed (~> 0.7.7)
@@ -54,18 +54,18 @@ GIT
       uglifier (>= 1.0.3)
       uuid (= 2.3.5)
       will_paginate (~> 3.0.2)
-    gko_documents (0.3.76)
+    gko_documents (0.3.77)
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
-    gko_features (0.3.76)
-    gko_images (0.3.76)
-    gko_inquiries (0.3.76)
+    gko_features (0.3.77)
+    gko_images (0.3.77)
+    gko_inquiries (0.3.77)
       filters_spam (~> 0.2)
       launchy
-    gko_newsletters (0.3.76)
+    gko_newsletters (0.3.77)
       createsend (~> 1.0.4)
-    gko_stickers (0.3.76)
-    gko_themes (0.3.76)
+    gko_stickers (0.3.77)
+    gko_themes (0.3.77)
       less-rails-bootstrap
       rubyzip (= 0.9.6.1)
 
@@ -307,17 +307,17 @@ PLATFORMS
 DEPENDENCIES
   active_shipping!
   coffee-rails (~> 3.2.2)
-  gko_auth (= 0.3.76)!
-  gko_categories (= 0.3.76)!
-  gko_core (= 0.3.76)!
-  gko_documents (= 0.3.76)!
-  gko_features (= 0.3.76)!
-  gko_images (= 0.3.76)!
-  gko_inquiries (= 0.3.76)!
-  gko_newsletters (= 0.3.76)!
-  gko_stickers (= 0.3.76)!
+  gko_auth (= 0.3.77)!
+  gko_categories (= 0.3.77)!
+  gko_core (= 0.3.77)!
+  gko_documents (= 0.3.77)!
+  gko_features (= 0.3.77)!
+  gko_images (= 0.3.77)!
+  gko_inquiries (= 0.3.77)!
+  gko_newsletters (= 0.3.77)!
+  gko_stickers (= 0.3.77)!
   gko_store (= 0.0.41)!
-  gko_themes (= 0.3.76)!
+  gko_themes (= 0.3.77)!
   iconv
   sass-rails (~> 3.2.5)
   uglifier (>= 1.0.3)
