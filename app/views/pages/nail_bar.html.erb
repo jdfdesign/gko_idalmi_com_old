@@ -1,0 +1,46 @@
+<div class="row-fluid">
+  <div class="span12">
+   <%= page_title(resource.title) %> 
+  </div>
+</div>
+<div class="row-fluid">
+
+  <div class="span7">
+    <% if resource.body.present? %>
+      <div class="page_content">
+        <%= resource_body_tag do %>
+          <%= render_html_text(resource.body) %>
+        <% end %> 
+      </div> 
+    <% end %>
+  </div> 
+  <div class="span5">
+	<% 
+	privacy_text = t(:'privacy_policy') 
+	%>
+	<div class="panel">
+	<h3><%= "Demander un rendez-vous".html_safe %></h3>
+	<%= simple_form_for(:inquiry, :url => inquiries_path, 
+	  :html => {:method => :post, :class => [:nice, :custom, :appointment]}) do |form| %>
+	  <%= hidden_field_tag(:return_to, request.url) %>
+	  <%= form.hidden_field :site_id, :value => site.id %>
+	  <%= form.input :date, :as => :date, 
+	        :start_year => Date.today.year,
+	        :end_year => Date.today.year + 1,
+	        :order => [:day, :month, :year] %>
+	  <%= form.input :name, :hint => '' %>
+	  <%= form.input :email, :hint => false %>
+	  <%= form.input :phone, :hint => false %>
+	  <%= form.input :message, :as => :text, :hint => false, :input_html => { :rows => 6 } %>
+	  <%# if privacy_text.present? -%>
+	    <%#= fieldcontain_tag(:class => :policy) do %>
+	      <%#= privacy_text.html_safe %>
+	    <%# end %>
+	  <%# end %>  
+	  <div class='form-actions'>
+	    <%= form.button :submit, t("send_inquiry"), :class => "btn submit" %>
+	  </div> 
+	<% end %> 
+	</div>
+  </div>
+</div>

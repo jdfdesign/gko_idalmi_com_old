@@ -11,16 +11,17 @@ GIT
 
 GIT
   remote: git@github.com:jdfdesign/gko_cms3.git
-  revision: 4fc3a2ed6e55cba17e5942157042c714b8ddbc6b
+  revision: f508c911f78ec600fbe74d3406ac4d1043d7a2e1
   specs:
-    gko_auth (0.3.84)
+    gko_auth (0.4.29)
       cancan (= 1.6.8)
       devise (= 2.1.2)
-    gko_categories (0.3.84)
-    gko_core (0.3.84)
+    gko_categories (0.4.29)
+    gko_core (0.4.29)
       RedCloth (= 4.2.9)
       activesupport-slices (= 0.0.2)
       acts_as_indexed (~> 0.7.7)
+      babosa (~> 0.3.8)
       backup (~> 3.0.24)
       capistrano
       carrierwave
@@ -29,16 +30,18 @@ GIT
       cucumber (~> 1.1.4)
       dragonfly (~> 0.9.12)
       dropbox-sdk (~> 1.2.0)
-      exception_notification
+      exception_notification (~> 2.6.1)
       faker (= 1.0.0)
       gem-patching (= 0.0.3)
       globalize3 (= 0.2.0)
+      gon (~> 4.0.0)
       has_scope (~> 0.5.1)
       highline (= 1.6.8)
       inherited_resources (= 1.3.1)
       jquery-rails (= 2.0.3)
       json
-      mysql2 (= 0.3.11)
+      letter_opener
+      mysql2 (~> 0.3.11)
       nested_set (= 1.7.0)
       nokogiri (~> 1.5.0)
       rack-cache (>= 0.5.3)
@@ -54,26 +57,25 @@ GIT
       uglifier (>= 1.0.3)
       uuid (= 2.3.5)
       will_paginate (~> 3.0.2)
-    gko_documents (0.3.84)
+    gko_documents (0.4.29)
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
-    gko_features (0.3.84)
-    gko_images (0.3.84)
-    gko_inquiries (0.3.84)
+    gko_features (0.4.29)
+    gko_images (0.4.29)
+    gko_inquiries (0.4.29)
       filters_spam (~> 0.2)
-      launchy
-    gko_newsletters (0.3.84)
+    gko_newsletters (0.4.29)
       createsend (~> 1.0.4)
-    gko_stickers (0.3.84)
-    gko_themes (0.3.84)
+    gko_stickers (0.4.29)
+    gko_themes (0.4.29)
       less-rails-bootstrap
       rubyzip (= 0.9.6.1)
 
 GIT
   remote: git@github.com:jdfdesign/gko_store.git
-  revision: ce55ef50ee760476a6c88521af4b6ff1b8a3c33a
+  revision: 9966d9074745bb381e208dc026ff4ad6c30da842
   specs:
-    gko_store (0.0.42)
+    gko_store (0.0.43)
       activemerchant (= 1.21.0)
       state_machine (= 1.1.2)
 
@@ -122,22 +124,23 @@ GEM
     acts_as_indexed (0.7.8)
     addressable (2.3.2)
     arel (3.0.2)
+    babosa (0.3.8)
     backup (3.0.24)
       open4 (~> 1.3.0)
       thor (~> 0.14.6)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
     cancan (1.6.8)
-    capistrano (2.13.3)
+    capistrano (2.13.5)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    carrierwave (0.6.2)
+    carrierwave (0.7.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
-    codemirror-rails (2.33)
+    codemirror-rails (2.35)
       railties (~> 3.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -182,11 +185,14 @@ GEM
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       paper_trail (~> 2)
+    gon (4.0.1)
+      actionpack (>= 2.3.0)
+      json
     has_scope (0.5.1)
     hashie (1.2.0)
     highline (1.6.8)
     hike (1.2.1)
-    httparty (0.8.3)
+    httparty (0.9.0)
       multi_json (~> 1.0)
       multi_xml
     i18n (0.6.0)
@@ -201,13 +207,15 @@ GEM
     json (1.7.5)
     launchy (2.1.2)
       addressable (~> 2.3)
-    less (2.2.1)
+    less (2.2.2)
       commonjs (~> 0.2.6)
-    less-rails (2.2.3)
+    less-rails (2.2.6)
       actionpack (>= 3.1)
       less (~> 2.2.0)
-    less-rails-bootstrap (2.1.0)
+    less-rails-bootstrap (2.2.0)
       less-rails (~> 2.2.0)
+    letter_opener (1.0.0)
+      launchy (>= 2.0.4)
     macaddr (1.6.1)
       systemu (~> 2.5.0)
     mail (2.4.4)
@@ -227,7 +235,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.5.2)
+    net-ssh (2.6.1)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nokogiri (1.5.5)
@@ -264,7 +272,7 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
-    responders (0.9.2)
+    responders (0.9.3)
       railties (~> 3.1)
     rmagick (2.13.1)
     routing-filter (0.3.1)
@@ -287,11 +295,11 @@ GEM
     term-ansicolor (1.0.7)
     thor (0.14.6)
     tilt (1.3.3)
-    treetop (1.4.10)
+    treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
     truncate_html (0.5.5)
-    tzinfo (0.3.33)
+    tzinfo (0.3.34)
     uglifier (1.2.7)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
@@ -307,17 +315,17 @@ PLATFORMS
 DEPENDENCIES
   active_shipping!
   coffee-rails (~> 3.2.2)
-  gko_auth (= 0.3.84)!
-  gko_categories (= 0.3.84)!
-  gko_core (= 0.3.84)!
-  gko_documents (= 0.3.84)!
-  gko_features (= 0.3.84)!
-  gko_images (= 0.3.84)!
-  gko_inquiries (= 0.3.84)!
-  gko_newsletters (= 0.3.84)!
-  gko_stickers (= 0.3.84)!
-  gko_store (= 0.0.42)!
-  gko_themes (= 0.3.84)!
+  gko_auth (= 0.4.29)!
+  gko_categories (= 0.4.29)!
+  gko_core (= 0.4.29)!
+  gko_documents (= 0.4.29)!
+  gko_features (= 0.4.29)!
+  gko_images (= 0.4.29)!
+  gko_inquiries (= 0.4.29)!
+  gko_newsletters (= 0.4.29)!
+  gko_stickers (= 0.4.29)!
+  gko_store (= 0.0.43)!
+  gko_themes (= 0.4.29)!
   iconv
   sass-rails (~> 3.2.5)
   uglifier (>= 1.0.3)

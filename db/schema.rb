@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903161910) do
+ActiveRecord::Schema.define(:version => 20121101203424) do
 
   create_table "accounts", :force => true do |t|
     t.string   "reference",  :limit => 40
@@ -514,16 +514,6 @@ ActiveRecord::Schema.define(:version => 20120903161910) do
     t.datetime "updated_at"
   end
 
-  create_table "mail_methods", :force => true do |t|
-    t.integer  "site_id"
-    t.string   "environment"
-    t.boolean  "active",      :default => true
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "mail_methods", ["site_id"], :name => "index_mail_methods_on_site_id"
-
   create_table "newsletter_subscribers", :force => true do |t|
     t.integer  "site_id"
     t.string   "email"
@@ -838,8 +828,7 @@ ActiveRecord::Schema.define(:version => 20120903161910) do
     t.boolean  "shallow_permalink", :default => true
     t.boolean  "robot_index",       :default => true
     t.boolean  "robot_follow",      :default => true
-    t.boolean  "locked",            :default => false
-    t.integer  "locked_by"
+    t.boolean  "restricted",        :default => false
   end
 
   add_index "sections", ["link_id", "link_type"], :name => "index_sections_on_link_id_and_link_type"
@@ -930,6 +919,8 @@ ActiveRecord::Schema.define(:version => 20120903161910) do
     t.string   "logo_ext"
     t.string   "default_image_uid"
     t.integer  "languages_count",          :default => 0
+    t.datetime "liquid_models_updated_at"
+    t.text     "page_types"
   end
 
   add_index "sites", ["account_id"], :name => "index_sites_on_account_id"

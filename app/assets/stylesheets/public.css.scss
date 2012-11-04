@@ -68,8 +68,7 @@ $borderSize: 6px;
 //@import "gko/store"; 
 //@import "gko/elastislide";
 @import "twitter/bootstrap";
-@import "gko/mixin.1.0.0";
-@import "gko/default";
+@import "gko/public/base";
 @import "gko/store";
 /*-----------------------------------------
    SHARED STYLES 
@@ -151,6 +150,7 @@ label {
 		h2.thumbnail-title a {
 			font-size: $baseFontSize;
 			font-weight: 700; 
+			line-height: $baseLineHeight;
 		}
 		&:hover,  
 		&:focus { 
@@ -164,7 +164,12 @@ label {
 		}
 	}
 }
-
+#copyright-container {
+	text-align: center;
+}
+#site-by {
+	font-size: 9px;
+}
 
 /*-----------------------------------------
  GLOBAL EFFECT
@@ -214,7 +219,9 @@ a {
 		@include hide-text;
 	}
 }
-
+#locales-menu {
+	float:right;
+}
 /*-----------------------------------------
  FOOTER
 ----------------------------------------- */
@@ -302,6 +309,7 @@ body#home {
  RESPONSIVE
 ----------------------------------------- */
 @import "twitter/bootstrap/responsive";
+@import "gko/default_responsive";
 
 @media (max-width: 979px) {
 	// Nav and dropdown links in navbar

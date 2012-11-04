@@ -1,0 +1,37 @@
+<%
+  @products ||= site.products.live
+  @features = site.features
+%>
+<% content_for :page_content do %>
+<% if @features.any? %>
+<div class="row-fluid">
+  <div class="span12"  id="home-features">
+    <%= render 'shared/carousel', :features => @features %>
+  </div>
+</div>
+<% end %> 
+<div class="row-fluid">
+  <section class="span4">
+    <h3><%= "Boutique en Ligne".html_safe %></h3>
+    <%= "Découvrez les produits Idalmi St Barth dans la boutique en ligne. L'onglerie : vernis à ongle, limes, polissoirs / Le soin du corps : gels douche bio, crèmes hydratantes bio, lotions spa bio, body spray bio,...".html_safe %>
+<br/><br/><a SRC="http://idalmi.joufdesign.com/boutique-en-ligne">VISITER LA BOUTIQUE</a>
+  </section>
+  <section class="span4">
+    <h3><%= "I by Idalmi".html_safe %></h3>
+    <%= "I by Idalmi est le 'make up & nail bar' situé à Gustavia, Saint-Barths : maquillage, soin des mains, pose de vernis,... prenons rendez-vous !".html_safe %>
+<br/><br/><br/><a SRC="http://idalmi.joufdesign.com/i-by-idalmi-maquillage-et-bar-a-ongle">PRENDRE RENDEZ-VOUS</a>
+  </section>
+  <section class="span4"> 
+    <div class="panel">
+    <h3><%= "Restez informé".html_safe %></h3>
+    <p><%= "Souscrivez à la newsletter d'Idalmi et obtenez les dernières news !".html_safe %></p> 
+    <%= simple_form_for(:inquiry, :url => inquiries_path, :method => :post,
+     :html => {:class => [:'form-inline', :appointment]}) do |form| %>
+      <%= hidden_field_tag(:return_to, request.url) %>
+      <%= form.input :email, :label => false, :placeholder => "email" %>
+      <%= form.button 'submit', "Je m'enregistre".html_safe, :class => "btn btn-primary" %>
+    <% end %> 
+    </div>
+  </section>
+</div> 
+<% end %>

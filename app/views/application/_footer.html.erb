@@ -1,0 +1,25 @@
+<div id='footer-container' class='container-fluid'>
+  <div id='footer' class='row-fluid'>
+    <div class="span3">
+      <h3><small><%= t("Informations") %></small></h3>
+      <%= render_menu('pipe') %>
+    </div>
+ <div class="span3">
+     <h3><small><%= t("indicators") %></small></h3>
+      <a id="indicators"></a>
+    </div>
+    <div class="span3">
+      <h3><small><%= t("follow_us") %></small></h3>
+     <p><a href="https://twitter.com/idalmi6" class="twitter-follow-button" data-show-count="false" data-show-screen-name="false">Follow @idalmi6</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+ <p><iframe src="http://www.facebook.com/plugins/like.php?href=http://www.facebook.com/pages/I-by-Idalmi-St-Barth-Make-up-Nail-Bar/114834961968421&amp;send=false&amp;layout=box_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=60" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:62px; height:60px;" allowtransparency="true"></iframe></p>
+<br/>
+    </div>
+    <div class="span3">
+      <h3><small><%= t("contact_us") %></small></h3>
+        <address><small><%= "Idalmi St Barth<br/>rue du roi Oscar II<br/>Gustavia Saint-Barths<br/>tel. +590 (0)590 52 80 38<br/>cell. +590 (0)690 31 63 69<br/>".html_safe %>
+	<%= mail_to("contact@idalmistbarth.com", "contact@idalmistbarth.com", :encode => "javascript", :subject => "Message from www.idalmiStBarth.com") %></small></address>
+
+    </div>
+  </div>
+</div>
