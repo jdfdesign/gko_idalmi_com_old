@@ -30,3 +30,6 @@ cd ~/developer/workspace/gko_joufdesign_com
 rake jobs:work
 cd ~/developer/workspace/gko_joufdesign_com
 rake jobs:clear
+
+cd ~/Github/gko_idalmi_com
+cap deploy:migrations
