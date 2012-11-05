@@ -9,28 +9,14 @@ GIT
       i18n
       json (>= 1.5.1)
 
-PATH
-  remote: /Users/regisbruggheman/Github/gko/gko_store
-  specs:
-    gko_store (0.0.43)
-      activemerchant (= 1.21.0)
-      state_machine (= 1.1.2)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_auth
+GIT
+  remote: git@github.com:jdfdesign/gko_cms3.git
+  revision: 73c4216ae8435f317da91aae953dbad439305d77
   specs:
     gko_auth (0.4.31)
       cancan (= 1.6.8)
       devise (= 2.1.2)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_categories
-  specs:
     gko_categories (0.4.31)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_core
-  specs:
     gko_core (0.4.31)
       RedCloth (= 4.2.9)
       activesupport-slices (= 0.0.2)
@@ -71,47 +57,27 @@ PATH
       uglifier (>= 1.0.3)
       uuid (= 2.3.5)
       will_paginate (~> 3.0.2)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_documents
-  specs:
     gko_documents (0.4.31)
       dragonfly (~> 0.9.8)
       rack-cache (>= 0.5.3)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_features
-  specs:
     gko_features (0.4.31)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_images
-  specs:
     gko_images (0.4.31)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_inquiries
-  specs:
     gko_inquiries (0.4.31)
       filters_spam (~> 0.2)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_newsletters
-  specs:
     gko_newsletters (0.4.31)
       createsend (~> 1.0.4)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_stickers
-  specs:
     gko_stickers (0.4.31)
-
-PATH
-  remote: /Users/regisbruggheman/Github/gko_cms3/gko_themes
-  specs:
     gko_themes (0.4.31)
       less-rails-bootstrap
       rubyzip (= 0.9.6.1)
+
+GIT
+  remote: git@github.com:jdfdesign/gko_store.git
+  revision: 9966d9074745bb381e208dc026ff4ad6c30da842
+  specs:
+    gko_store (0.0.43)
+      activemerchant (= 1.21.0)
+      state_machine (= 1.1.2)
 
 GEM
   remote: http://rubygems.org/
@@ -349,17 +315,17 @@ PLATFORMS
 DEPENDENCIES
   active_shipping!
   coffee-rails (~> 3.2.2)
-  gko_auth!
-  gko_categories!
-  gko_core!
-  gko_documents!
-  gko_features!
-  gko_images!
-  gko_inquiries!
-  gko_newsletters!
-  gko_stickers!
-  gko_store!
-  gko_themes!
+  gko_auth (= 0.4.31)!
+  gko_categories (= 0.4.31)!
+  gko_core (= 0.4.31)!
+  gko_documents (= 0.4.31)!
+  gko_features (= 0.4.31)!
+  gko_images (= 0.4.31)!
+  gko_inquiries (= 0.4.31)!
+  gko_newsletters (= 0.4.31)!
+  gko_stickers (= 0.4.31)!
+  gko_store (= 0.0.43)!
+  gko_themes (= 0.4.31)!
   iconv
   sass-rails (~> 3.2.5)
   uglifier (>= 1.0.3)
